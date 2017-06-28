@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+/** Theme **/
+
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    padding-top: 0px;
+    padding-bottom: 50px;
+    background: #ffffff;
+    color: #000000;
+}
+
+/** Home Page **/
+.header-content {
+    padding-bottom: 100px;
+    align-content: center;
+    text-align: center;
+    background: #749bff; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #78eeff, #57baff); /* For Safari */
+    border-bottom: solid 3px #656565;
+}
+.header-banner {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+.header-banner h1{
+    color: white;
+    font-size: 50px;
+}
+.header-banner h3 {
+    color: #656565;
+    margin: 0;
+    font-size: 20px;
+    paddint-bottom: 10px;
+}
+.header-banner p {
+    color: #656565;
+    margin: 0;
+    font-size: 14px;
+    padding-top: 10px;
+    paddint-bottom: 10px;
+}
+.main-input {
+    width: 400px;
+    border: none;
+}
+.main-input:active, .main-input:focus, .main-input:hover{
+    outline: none;
+}
+
+/** Nav Bar **/
+.navbar {
+    background-color: white;
+    color: #656565;
+}
+.navbar-default{
+    border-bottom: solid 3px #656565;
+    margin-bottom: 0;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #78eeff;
+    color: #656565;
+}
+.navbar-default .navbar-header a.navbar-brand{
+    font-weight: 500;
+    background-color: white;
+    color: #57baff;
+}
