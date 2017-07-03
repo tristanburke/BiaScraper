@@ -15,7 +15,7 @@
     <!-- Include Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <!-- Include BiaScraper css -->
-    <link href="css/BiaScraper.css" rel="stylesheet">
+    <link href="BiaScraper.css" rel="stylesheet">
 
     <title>BiaScraper</title>
 </head>
@@ -39,7 +39,12 @@
             <p>Input an url to an article on any well known website and be presented
             with </p>
         </div>
-        <input id="url-input" class="main-input" type="text" ng-model="input"/>
+        <!--<input id="url-input" class="main-input" type="text" ng-model="hello"/>-->
+        <form action="/" method="post">
+            <input id="url-input" name="article" placeholder="name" class="main-input" type="text" ng-model="hello"/>
+            <!--<input type="text" name="article" placeholder="name">-->
+            <!--<button>Show me the articles!</button>-->
+        </form>
     </div>
     <div class="body-content">
         <div class="description text-center">
