@@ -20,7 +20,7 @@ app.get("/", function (req, res) {
 });
 
 app.post("/", function (req, res) {
-    var article = req.body.article;
+    let article = req.sanitize(req.body.article);
     res.send(article);
 });
 
