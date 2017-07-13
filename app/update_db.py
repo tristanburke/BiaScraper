@@ -12,10 +12,19 @@ def main():
     msnbc_collection = db.msnbc_collection
     cbs_collection = db.cbs_collection
 
-    cnn_paper = newspaper.build("http://www.cnn.com/", memoize_articles=False)
-    fox_paper = newspaper.build("http://www.foxnews.com/", memoize_articles=False)
-    msnbc_paper = newspaper.build("http://www.msnbc.com/", memoize_articles=False)
-    cbs_paper = newspaper.build("http://www.cbsnews.com/", memoize_articles=False)
+    # Newspaper.build is memoized. Papers are only used in the build if they have not been built before.
+    # To get around this, e.g. in case you want a full database rebuild, you can set the memoize_articles parameter.
+    # Example: cnn_paper = newspaper.build("http://www.cnn.com/", memoize_articles=False)
+    # Warning, full database rebuilds definitely take awhile, up to 20 minutes in my experience.
+
+    cnn_paper = newspaper.build("http://www.cnn.com/")
+    print "CNN paper size: " + str(cnn_paper.size())
+    fox_paper = newspaper.build("http://www.foxnews.com/")
+    print "Fox paper size: " + str(fox_paper.size())
+    msnbc_paper = newspaper.build("http://www.msnbc.com/")
+    print "MSNBC paper size: " + str(msnbc_paper.size())
+    cbs_paper = newspaper.build("http://www.cbsnews.com/")
+    print "CBS paper size: " + str(cbs_paper.size())
 
     papers = [cnn_paper, fox_paper, msnbc_paper, cbs_paper]
     newspaper.news_pool.set(papers, threads_per_source=2)

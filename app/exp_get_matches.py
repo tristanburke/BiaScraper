@@ -13,6 +13,10 @@ db = client.article_database
 
 collections = [db.fox_collection, db.cbs_collection, db.msnbc_collection, db.cnn_collection]
 
+"""
+TODO: Use pymongo parallel scan to concurrently get article similarities. The Doc.similarity method is currently
+the biggest bottleneck in this program, making up over 50% of the program's runtime.
+"""
 
 def get_doc(url):
     g = Goose()

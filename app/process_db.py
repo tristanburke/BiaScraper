@@ -6,6 +6,15 @@ from pymongo import MongoClient
 
 nlp = spacy.load("en")
 
+""" 
+TODO: Only update collections with new articles, rather than re-processing the articles which already 
+have an "nlp_text" property. The current reason this is not done is that spaCy has a serialization bug
+related to concurrency issues in nlp.pipe(). So with each database processing, some small number of articles
+may be serialized incorrectly. Reprocessing the database with each update improves robustness in the sense
+that the same article will probably not be serialized incorrectly twice. The next version of spaCy promises
+to fix this issue, so it should be a temporary problem.
+"""
+
 
 def get_sim_stream(collection):
     static_stream, dynamic_stream = tee(collection.find())
