@@ -1,5 +1,4 @@
 import sys
-import multiprocessing as mp
 from itertools import tee, izip
 import spacy
 from goose import Goose
@@ -17,31 +16,26 @@ g = Goose()
 user_article = g.extract(url=user_article_url)
 user_article_text = user_article.cleaned_text
 
-print "============== GOOSE ============="
 in_text = nlp(user_article_text)
-
 
 client = MongoClient()
 db = client.article_database
 
 collections = [db.fox_collection, db.cbs_collection, db.msnbc_collection, db.cnn_collection]
 
+
 def get_match(collection):
-    static_stream, dynamic_stream  = tee(collection.find())
+    static_stream, dynamic_stream = tee(collection.find())
 
     similarity_stream = izip(static_stream,
-            (in_text.similarity(processed_doc) for processed_doc in \
-                    nlp.pipe((article["text"] for article in dynamic_stream),
-                        batch_size=50, n_threads=4)))
+                             (in_text.similarity(processed_doc) for processed_doc in
+                              nlp.pipe((article["text"] for article in dynamic_stream),
+                                       batch_size=50, n_threads=4)))
 
     return max(similarity_stream, key=lambda x: x[1])[0]
 
+
 for c in collections:
- match = get_match(c)
- print "==================== BEGIN MATCH COLLECTION ========================="
- print "\n"
- print match["url"]
- print match["image"]
- print "\n"
- print "==================== END MATCH COLLECTION ========================="
- print "\n"
+    match = get_match(c)
+    print match["url"]
+    print match["image"]
