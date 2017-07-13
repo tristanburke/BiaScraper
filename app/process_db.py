@@ -4,12 +4,7 @@ import spacy
 from bson.binary import Binary
 from pymongo import MongoClient
 
-client = MongoClient()
-db = client.article_database
-
 nlp = spacy.load("en")
-
-collections = [db.fox_collection, db.cbs_collection, db.msnbc_collection, db.cnn_collection]
 
 
 def get_sim_stream(collection):
@@ -22,10 +17,15 @@ def get_sim_stream(collection):
 
 
 def main():
+    client = MongoClient()
+    db = client.article_database
+
+    collections = [db.fox_collection, db.cbs_collection, db.msnbc_collection, db.cnn_collection]
+
     for c in collections:
         for entry, processed_text in get_sim_stream(c):
-            c.update_one({"_id": entry["_id"]}, {"$set": {"nlp_text": Binary(pickle.dumps(processed_text.to_bytes()))}},
-                         upsert=False)
+            c.update_one({"_id": entry["_id"]},
+                         {"$set": {"nlp_text": Binary(pickle.dumps(processed_text.to_bytes()))}}, upsert=False)
 
 
 if __name__ == '__main__':
