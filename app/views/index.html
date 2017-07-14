@@ -11,7 +11,7 @@
     <!-- Include AngularJS -->
     <script href="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <!-- Include angular-cdn-src -->
-    <script href="angular-cdn-src.min.js"></script>
+    <script src="/node_modules/angular/angular.js"></script>
     <!-- Include Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <!-- Include BiaScraper css -->
@@ -19,7 +19,7 @@
 
     <title>BiaScraper</title>
 </head>
-<body id="page-top">
+<body id="page-top" ng-app="mainApp" ng-controller="main_controller">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -39,16 +39,17 @@
             <p>Input an url to an article on any well known website and be presented
             with </p>
         </div>
-        <!--<input id="url-input" class="main-input" type="text" ng-model="hello"/>-->
         <form action="/" method="post">
-            <input id="url-input" name="article" placeholder="name" class="main-input" type="text" ng-model="hello"/>
-            <% if (results) { %>
-                <a href=<%= results[0] %>>FOX</a>
-                <img src=<%= results[1] %> alt="">
-            <% } %>
-            <!--<input type="text" name="article" placeholder="name">-->
-            <!--<button>Show me the articles!</button>-->
+            <input id="url-input" name="article" ng-model="url" placeholder="name" class="main-input" type="text"/>
+            <button id="url-button" name="urlbutton" ng-click="retrieve()">Find!</button>
         </form>
     </div>
+    <div class="main-content">
+        <div ng-hide="results.length">No items found</div>
+        <div ng-repeat="r in results">
+
+        </div>
+    </div>
+    <div class="footer"></div>
 </body>
 </html>

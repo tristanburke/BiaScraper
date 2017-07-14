@@ -14,33 +14,14 @@ const app = express();
 
 // APP CONFIG
 mongoose.connect("mongodb://localhost/news_app");
-app.set("view engine", "ejs");
+app.set("view engine", "html");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
-app.get("/", function (req, res) {
-    res.render("index.ejs", {results: null});
-});
+// Initialize Main Angular App
+var mainApp = angular.module("mainApp", []);
 
-app.post("/", function (req, res) {
-    let article = req.sanitize(req.body.article);
-
-    let options = {
-        mode: 'text',
-        pythonPath: '/home/ian/.virtualenvs/spacy/bin/python',
-        scriptPath: '/home/ian/Programming/projects/BiaScraper/app/',
-        args: [article]
-    };
-
-    pythonShell.run('get_matches.py', options, function (err, results) {
-        if (err) throw err;
-        // results is an array consisting of messages collected during execution
-        console.log('results: %j', results);
-        res.render("index.ejs", {results: results});
-    });
-
-});
 
 app.listen(3000, () => console.log("server has started!"));
