@@ -18,6 +18,7 @@ TODO: Use pymongo parallel scan to concurrently get article similarities. The Do
 the biggest bottleneck in this program, making up over 50% of the program's runtime.
 """
 
+
 def get_doc(url):
     g = Goose()
     user_article = g.extract(url=url)
