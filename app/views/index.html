@@ -46,8 +46,14 @@
     </div>
     <div class="main-content">
         <div ng-hide="results.length">No items found</div>
-        <div ng-repeat="r in results">
-
+        <div class="row">
+            <div ng-repeat="article in results">
+                <div class="clearfix" ng-if="$index % 3 == 0"></div>
+                <div class="col-sm-4">
+                    <h2>{{article.title}}</h2>
+                    <img src={{article.url}}>
+                </div>
+            </div>
         </div>
     </div>
     <div class="footer"></div>
