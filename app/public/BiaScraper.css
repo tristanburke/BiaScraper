@@ -11,7 +11,10 @@ body{
     color: #000000;
 }
 
-/** Home Page **/
+/**  ================================
+                Home Page
+     ================================ **/
+
 .header-content {
     padding-bottom: 100px;
     align-content: center;
@@ -49,7 +52,10 @@ body{
     outline: none;
 }
 
-/** Nav Bar **/
+/**  ================================
+               Nav Bar
+     ================================ **/
+
 .navbar {
     background-color: white;
     color: #656565;
@@ -66,4 +72,16 @@ body{
     font-weight: 500;
     background-color: white;
     color: #57baff;
+}
+
+/**  ================================
+               Article
+     ================================ **/
+
+.article {
+
+}
+
+.article img{
+
 }
