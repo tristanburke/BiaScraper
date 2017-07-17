@@ -5,8 +5,6 @@
 
 body{
     font-family: 'Josefin Sans', sans-serif;
-    padding-top: 0px;
-    padding-bottom: 50px;
     background: #ffffff;
     color: #000000;
 }
@@ -16,7 +14,8 @@ body{
      ================================ **/
 
 .header-content {
-    padding-bottom: 100px;
+    height: 250px;
+    width: 100%;
     align-content: center;
     text-align: center;
     background: #749bff; /* For browsers that do not support gradients */
@@ -24,10 +23,11 @@ body{
     border-bottom: solid 3px #656565;
 }
 .header-banner {
-    padding-top: 50px;
-    padding-bottom: 30px;
+    position: relative;
+    top: 50px;
 }
 .header-banner h1{
+    margin: 0;
     color: white;
     font-size: 50px;
 }
@@ -35,21 +35,30 @@ body{
     color: #656565;
     margin: 0;
     font-size: 20px;
-    paddint-bottom: 10px;
 }
 .header-banner p {
     color: #656565;
     margin: 0;
     font-size: 14px;
-    padding-top: 10px;
-    paddint-bottom: 10px;
 }
 .main-input {
+    position: relative;
+    top: 70px;
     width: 400px;
     border: none;
 }
+.find-button {
+    position: relative;
+    top: 70px;
+}
 .main-input:active, .main-input:focus, .main-input:hover{
     outline: none;
+}
+.main-content {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 /**  ================================
@@ -74,14 +83,46 @@ body{
     color: #57baff;
 }
 
-/**  ================================
-               Article
-     ================================ **/
+/** Footer **/
 
-.article {
-
+.biasfooter{
+    bottom: 0px;
+    color: white;
+    padding-top: 30px;
+    background-color: #656565;
 }
 
-.article img{
+/**  ================================
+               Main content
+     ================================ **/
+.placeholder-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
 
+}
+.article {
+    height: 380px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.article:hover{
+    -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+    -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+    box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+}
+.article h3{
+    padding: 0px;
+    margin-top: 8px;
+    color: black;
+    font-size: 18px
+}
+.article h4{
+    padding: 0px;
+}
+.article a:hover, a:active, a:focus{
+    text-decoration: none;
+}
+.article img{
+    width: 200px;
+    height: auto;
 }
