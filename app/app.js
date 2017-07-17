@@ -14,14 +14,14 @@ const app = express();
 
 // APP CONFIG
 mongoose.connect("mongodb://localhost/news_app");
-app.set("view engine", "ejs");
+app.set("view engine", "html");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
 app.get("/", function (req, res) {
-    res.render("index.ejs", {results: null});
+    res.render("index.html", {results: null});
 });
 
 app.post("/", function (req, res) {
@@ -38,7 +38,7 @@ app.post("/", function (req, res) {
         if (err) throw err;
         // results is an array consisting of messages collected during execution
         console.log('results: %j', results);
-        res.render("index.ejs", {results: results});
+        res.render("index.html", {results: results});
     });
 
 });
