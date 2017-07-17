@@ -2,11 +2,15 @@
 
 
 /** Theme **/
+/*
+    Color-Scheme:
+
+ */
 
 body{
     font-family: 'Josefin Sans', sans-serif;
     padding-top: 0px;
-    padding-bottom: 50px;
+    padding-bottom: 0px;
     background: #ffffff;
     color: #000000;
 }
@@ -67,3 +71,23 @@ body{
     background-color: white;
     color: #57baff;
 }
+
+/** Front Page Body **/
+
+.body-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.description {
+
+}
+
+/** Footer **/
+.footer {
+    background-color: #656565;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+}
+
