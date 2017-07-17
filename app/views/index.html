@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html ng-app>
+<html>
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="description" content="BiaScraper is a tool to expand your... idk yet ">
-    <meta name="author" content="Tristan Burke">
+    <meta name="authors" content="Tristan Burke, Ian McDonald">
 
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Include AngularJS -->
-    <script href="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <!-- Include angular-cdn-src -->
-    <script src="/node_modules/angular/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+    <script src="../main_controller.js"></script>
+    <script src="../mainApp.js"></script>
     <!-- Include Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <!-- Include BiaScraper css -->
-    <link href="BiaScraper.css" rel="stylesheet">
+    <link href="../public/BiaScraper.css" rel="stylesheet">
+    <!-- Include Angular Controller and App scripts -->
 
     <title>BiaScraper</title>
 </head>
@@ -39,23 +40,78 @@
             <p>Input an url to an article on any well known website and be presented
             with </p>
         </div>
-        <form action="/" method="post">
-            <input id="url-input" name="article" ng-model="url" placeholder="name" class="main-input" type="text"/>
-            <button id="url-button" name="urlbutton" ng-click="retrieve()">Find!</button>
-        </form>
+        <input id="url-input" name="article" ng-model="input_url" placeholder="name" class="main-input" type="text"/>
+        <button id="url-button" name="urlbutton" ng-click="retrieve()" class="find-button">Find!</button>
     </div>
     <div class="main-content">
-        <div ng-hide="results.length">No items found</div>
+        <div ng-show="placeholder_toggle" class="placeholder-content text-center">
+            <p>This is the placeholder text we will have when a user has not made a request yet. <br>
+                Maybe we will describe mission, ourselves, why bees are dying at an alarming rate? <br>
+                Maybe we include an image. Mostly we tell them to make an article request because we <br>
+                really have nothing interesting to say.
+            </p>
+        </div>
         <div class="row">
             <div ng-repeat="article in results">
                 <div class="clearfix" ng-if="$index % 3 == 0"></div>
                 <div class="col-sm-4">
-                    <h2>{{article.title}}</h2>
-                    <img src={{article.url}}>
+                    <div class="article">
+                        <div class="text-center">
+                            <a href={{article.url}}><h3>{{article.title}}</h3></a>
+                            <a href={{article.sourceurl}}><h4>{{article.source}}</h4></a>
+                            <h4>{{article.date}}</h4>
+                            <img src={{article.imgurl}}>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer"></div>
+    <footer class="container-fluid biasfooter text-center">
+        <p>All Rights Reserved - Copyright Tristan Burke, Ian McDonald &copy; 2017 </p>
+    </footer>
 </body>
+<script>
+    mainApp.controller("main_controller", function($scope) {
+        $scope.placeholder_toggle = true;
+        $scope.input_url = "";
+        $scope.results = {};
+        $scope.retrieve = function(){
+            var article = {
+                title: "Ian McDonald Wins Trashman of the Year, for the 20th time in a row!",
+                url: "https://www.facebook.com/profile.php?id=100008926356605",
+                imgurl: "https://vignette3.wikia.nocookie.net/grouches/images/b/be/Trash_Can.jpg/revision/latest?cb=20120409143605",
+                source: "Fox News",
+                sourceurl: "google.com",
+                date: "september"
+            };
+            var article2 = {
+                title: "McDoobies hits PR of 10oz Deadlift! Congrats kid!",
+                url: "https://www.facebook.com/profile.php?id=100008926356605",
+                imgurl: "https://vignette3.wikia.nocookie.net/grouches/images/b/be/Trash_Can.jpg/revision/latest?cb=20120409143605",
+                source: "Fox News",
+                sourceurl: "google.com",
+                date: "september"
+            };
+            var article3 = {
+                title: "Github user: iancmcdonald found guilty of advertising auto-download-porn crontab job",
+                url: "https://www.facebook.com/profile.php?id=100008926356605",
+                imgurl: "https://vignette3.wikia.nocookie.net/grouches/images/b/be/Trash_Can.jpg/revision/latest?cb=20120409143605",
+                source: "Fox News",
+                sourceurl: "google.com",
+                date: "september"
+            };
+            var article4 = {
+                title: "Ian C Mcdoublus Fights off Pack of Rabid Raccoons in local turf battle for Trash Areas",
+                url:"https://www.facebook.com/profile.php?id=100008926356605",
+                imgurl: "https://vignette3.wikia.nocookie.net/grouches/images/b/be/Trash_Can.jpg/revision/latest?cb=20120409143605",
+                source: "Fox News",
+                sourceurl: "google.com",
+                date: "september"
+            };
+            $scope.results = {article, article2, article3, article4};
+            $scope.placeholder_toggle = false;
+        }
+    });
+</script>
 </html>
