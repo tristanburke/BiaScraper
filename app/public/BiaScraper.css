@@ -2,9 +2,18 @@
 
 
 /** Theme **/
+/*
+    Color-Scheme:
+
+ */
 
 body{
     font-family: 'Josefin Sans', sans-serif;
+<<<<<<< HEAD
+=======
+    padding-top: 0px;
+    padding-bottom: 0px;
+>>>>>>> master
     background: #ffffff;
     color: #000000;
 }
@@ -83,6 +92,7 @@ body{
     color: #57baff;
 }
 
+<<<<<<< HEAD
 /** Footer **/
 
 .biasfooter{
@@ -126,3 +136,24 @@ body{
     width: 200px;
     height: auto;
 }
+=======
+/** Front Page Body **/
+
+.body-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.description {
+
+}
+
+/** Footer **/
+.footer {
+    background-color: #656565;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+>>>>>>> master

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="description" content="BiaScraper is a tool to expand your... idk yet ">
+    <meta name="author" content="Tristan Burke">
+
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Include AngularJS -->
+    <script href="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <!-- Include angular-cdn-src -->
+    <script href="angular-cdn-src.min.js"></script>
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <!-- Include BiaScraper css -->
+    <link href="BiaScraper.css" rel="stylesheet">
+
+    <title>BiaScraper</title>
+</head>
+<body id="page-top">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">BiaScraper</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="About.html">About</a></li>
+                <li><a href="Team.html">Team</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="header-content">
+        <div class="header-banner">
+            <h1>BiaScraper</h1>
+            <h3>Slogan goes here: it will be dope</h3>
+            <p>Input an url to an article on any well known website and be presented
+            with </p>
+        </div>
+        <!--<input id="url-input" class="main-input" type="text" ng-model="hello"/>-->
+        <form action="/" method="post">
+            <input id="url-input" name="article" placeholder="name" class="main-input" type="text" ng-model="hello"/>
+            <!--<input type="text" name="article" placeholder="name">-->
+            <!--<button>Show me the articles!</button>-->
+        </form>
+    </div>
+    <div class="body-content">
+        <div class="description text-center">
+            <h3>What is BiaScraper</h3>
+            <p>In times like now Ian McDonald is trash.... trash pit. trash man? Stay tuned, more trash
+            coming soon...</p>
+        </div>
+    </div>
+    <footer class="container-fluid footer text-center">
+        <p>All Rights Reserved - Copyright Tristan Burke, Ian McDonald &copy; 2017 </p>
+    </footer>
+</body>
+</html>
