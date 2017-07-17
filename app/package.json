@@ -18,7 +18,18 @@
   "homepage": "https://github.com/tristanburke/BiaScraper#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
     "ejs": "^2.5.6",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "express-sanitizer": "^1.0.2",
+    "method-override": "^2.3.9",
+    "mongoose": "^4.11.1",
+    "newspaperjs": "^1.0.0",
+    "openscraping": "^0.3.1",
+    "python-shell": "^0.4.0",
+    "request": "^2.81.0",
+    "rss-feed-emitter": "^1.0.6",
+    "rx": "^4.1.0",
+    "unfluff": "^1.1.0"
   }
 }
