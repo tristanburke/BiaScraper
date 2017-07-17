@@ -1,9 +1,9 @@
 import sys
-from itertools import tee, izip
-import cPickle as pickle
+from itertools import tee, zip_longest
+import pickle
 import spacy
 from spacy.tokens.doc import Doc
-from goose import Goose
+import newspaper
 from pymongo import MongoClient
 
 nlp = spacy.load("en")
@@ -20,9 +20,10 @@ the biggest bottleneck in this program, making up over 50% of the program's runt
 
 
 def get_doc(url):
-    g = Goose()
-    user_article = g.extract(url=url)
-    user_article_text = user_article.cleaned_text
+    article = newspaper.Article(url)
+    article.download()
+    article.parse()
+    user_article_text = article.text
     return nlp(user_article_text)
 
 
@@ -36,7 +37,7 @@ def get_match(collection, doc):
             return 0.0
 
     article_stream, sim_stream = tee(collection.find())
-    combo_stream = izip(article_stream, (get_sim(art) for art in sim_stream))
+    combo_stream = zip_longest(article_stream, (get_sim(art) for art in sim_stream))
 
     return max(combo_stream, key=lambda x: x[1])[0]
 
@@ -45,8 +46,8 @@ def main():
     for c in collections:
         in_doc = get_doc(sys.argv[1])
         match = get_match(c, in_doc)
-        print match["url"]
-        print match["image"]
+        print(match["url"])
+        print(match["image"])
 
 
 if __name__ == '__main__':

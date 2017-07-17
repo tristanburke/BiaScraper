@@ -1,5 +1,5 @@
-from itertools import tee, izip
-import cPickle as pickle
+from itertools import tee, zip_longest
+import pickle
 import spacy
 from bson.binary import Binary
 from pymongo import MongoClient
@@ -19,9 +19,9 @@ to fix this issue, so it should be a temporary problem.
 def get_sim_stream(collection):
     static_stream, dynamic_stream = tee(collection.find())
 
-    similarity_stream = izip(static_stream,
-                             (nlp.pipe((article["text"] for article in dynamic_stream),
-                                       batch_size=50, n_threads=4)))
+    similarity_stream = zip(static_stream,
+                            (nlp.pipe((article["text"] for article in dynamic_stream),
+                                      batch_size=50, n_threads=4)))
     return similarity_stream
 
 

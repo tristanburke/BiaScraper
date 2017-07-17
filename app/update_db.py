@@ -17,20 +17,20 @@ def main():
     # Example: cnn_paper = newspaper.build("http://www.cnn.com/", memoize_articles=False)
     # Warning, full database rebuilds definitely take awhile, up to 20 minutes in my experience.
 
-    cnn_paper = newspaper.build("http://www.cnn.com/")
-    print "CNN paper size: " + str(cnn_paper.size())
-    fox_paper = newspaper.build("http://www.foxnews.com/")
-    print "Fox paper size: " + str(fox_paper.size())
-    msnbc_paper = newspaper.build("http://www.msnbc.com/")
-    print "MSNBC paper size: " + str(msnbc_paper.size())
-    cbs_paper = newspaper.build("http://www.cbsnews.com/")
-    print "CBS paper size: " + str(cbs_paper.size())
+    cnn_paper = newspaper.build("http://www.cnn.com/", memoize_articles=False)
+    print("CNN paper size: " + str(cnn_paper.size()))
+    fox_paper = newspaper.build("http://www.foxnews.com/", memoize_articles=False)
+    print("Fox paper size: " + str(fox_paper.size()))
+    msnbc_paper = newspaper.build("http://www.msnbc.com/", memoize_articles=False)
+    print("MSNBC paper size: " + str(msnbc_paper.size()))
+    cbs_paper = newspaper.build("http://www.cbsnews.com/", memoize_articles=False)
+    print("CBS paper size: " + str(cbs_paper.size()))
 
     papers = [cnn_paper, fox_paper, msnbc_paper, cbs_paper]
     newspaper.news_pool.set(papers, threads_per_source=2)
     newspaper.news_pool.join()
 
-    print "DOWNLOADED ARTICLES"
+    print("DOWNLOADED ARTICLES")
 
     collection_dict = {cnn_paper: cnn_collection, fox_paper: fox_collection, msnbc_paper: msnbc_collection,
                        cbs_paper: cbs_collection}
@@ -50,9 +50,9 @@ def main():
 
                 collection_dict[paper].insert_one(article_data)
             except Exception:
-                print "ERROR!"
+                print("ERROR!")
 
-    print "UPDATED DATABASES"
+    print("UPDATED DATABASES")
 
 
 if __name__ == '__main__':
