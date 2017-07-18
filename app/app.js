@@ -29,12 +29,12 @@ app.post("/", function (req, res) {
 
     let options = {
         mode: 'text',
-        pythonPath: '/home/ian/.virtualenvs/spacy/bin/python',
+        pythonPath: '/home/ian/.virtualenvs/BiaScraper/bin/python',
         scriptPath: '/home/ian/Programming/projects/BiaScraper/app/',
         args: [article]
     };
 
-    pythonShell.run('get_matches.py', options, function (err, results) {
+    pythonShell.run('exp_get_matches.py', options, function (err, results) {
         if (err) throw err;
         // results is an array consisting of messages collected during execution
         console.log('results: %j', results);
