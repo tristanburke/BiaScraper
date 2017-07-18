@@ -122,6 +122,7 @@ body{
     font-size: 18px
 }
 .article h4{
+    font-size: 14px;
     padding: 0px;
 }
 .article a:hover, a:active, a:focus{
