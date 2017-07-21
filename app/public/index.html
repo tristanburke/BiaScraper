@@ -9,9 +9,9 @@
     <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Include AngularJS -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
-    <script src="../mainApp.js"></script>
-    <script src="../main_controller.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="mainApp.js"></script>
+    <script src="main_controller.js"></script>
     <!-- Include Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <!-- Include BiaScraper css -->
@@ -51,6 +51,8 @@
             really have nothing interesting to say.
         </p>
     </div>
+    <h3>{{input_url}}</h3>
+    <h3>{{tester}}</h3>
     <div class="row">
         <div ng-repeat="article in results">
             <div class="clearfix" ng-if="$index % 3 == 0"></div>
