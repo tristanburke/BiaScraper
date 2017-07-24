@@ -14,31 +14,31 @@ const app = express();
 
 // APP CONFIG
 mongoose.connect("mongodb://localhost/news_app");
-app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(express.static("dist"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
 app.get("/", function (req, res) {
-    res.render("index.ejs", {results: null});
+    res.render("index");
 });
 
-app.post("/", function (req, res) {
-    let article = req.sanitize(req.body.article);
+app.get("/api", function (req, res) {
+    let article = req.sanitize(req.params.inputUrl);
+    console.log(article);
 
     let options = {
         mode: 'text',
         pythonPath: '/home/ian/.virtualenvs/BiaScraper/bin/python',
         scriptPath: '/home/ian/Programming/projects/BiaScraper/app/',
-        args: [article]
+        args: article
     };
 
     pythonShell.run('exp_get_matches.py', options, function (err, results) {
         if (err) throw err;
         // results is an array consisting of messages collected during execution
         console.log('results: %j', results);
-        res.render("index.ejs", {results: results});
     });
 
 });
